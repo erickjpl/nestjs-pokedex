@@ -44,6 +44,8 @@ $ yarn run test:e2e
 $ yarn run test:cov
 
 docker-compose up -d
+
+http://localhost:3000/api/seed
 ```
 
 ## Support

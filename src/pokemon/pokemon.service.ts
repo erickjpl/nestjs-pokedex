@@ -19,8 +19,8 @@ export class PokemonService {
 
   async create(createPokemonDto: CreatePokemonDto) {
     const pokemonDto = {
-      name: createPokemonDto.name.toLocaleLowerCase(),
       ...createPokemonDto,
+      name: createPokemonDto.name.toLocaleLowerCase(),
     };
 
     try {
@@ -38,8 +38,7 @@ export class PokemonService {
 
   async findOne(filter: string) {
     let pokemon: Pokemon;
-
-    if (isNaN(Number(filter)))
+    if (!isNaN(Number(filter)))
       pokemon = await this.pokemonModel.findOne({ no: filter });
 
     // MongoId

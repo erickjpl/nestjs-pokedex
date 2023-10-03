@@ -77,11 +77,19 @@ export class PokemonService {
   }
 
   async remove(id: string) {
-    const pokemon = await this.findOne(id);
+    // Doble consulta (No recomendado)
+    // const pokemon = await this.findOne(id);
+    // await pokemon.deleteOne();
 
-    await pokemon.deleteOne();
-    // this.pokemonModel
-    return `This action removes a #${id} pokemon`;
+    // genera falso positivo si el id no existe
+    // const result = await this.pokemonModel.findByIdAndDelete(id);
+
+    // Valida si el id existe y lo elimina (recomendado)
+    const { deletedCount } = await this.pokemonModel.deleteOne({ _id: id });
+    if (deletedCount === 0)
+      throw new BadRequestException(`Pokemon with id ${id} not found`);
+
+    return true;
   }
 
   private handleExceptions(error: any) {

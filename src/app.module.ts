@@ -13,7 +13,9 @@ import { SeedModule } from './seed/seed.module';
       load: [EnvConfiguration],
       validationSchema: JoiValidationSchema,
     }),
-    MongooseModule.forRoot(process.env.MONGODB_URL),
+    MongooseModule.forRoot(process.env.MONGODB_URL, {
+      dbName: process.env.MONGODB_DB_NAME,
+    }),
     PokemonModule,
     CommonModule,
     SeedModule,

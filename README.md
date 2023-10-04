@@ -53,6 +53,18 @@ http://localhost:3000/api/seed
 cp .env.example .env
 ```
 
+## Build
+docker-compose -f docker-compose.prod.yaml --env-file .env.prod up --build
+
+## Run
+docker-compose -f docker-compose.prod.yaml --env-file .env.prod up
+
+## Nota
+Por defecto, __docker-compose__ usa el archivo ```.env```, por lo que si tienen el archivo .env y lo configuran con sus variables de entorno de producción, bastaría con
+```
+docker-compose -f docker-compose.prod.yaml up --build
+```
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
